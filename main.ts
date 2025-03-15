@@ -37,7 +37,7 @@ namespace timer {
      */
     //% blockid=timer_parallel
     //% block="attach do"
-    //% handerStatement
+    //% handlerStatement
     //% group="run in state"
     //% weight=5
     export function parallel(then: () => void) {
