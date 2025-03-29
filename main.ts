@@ -9,8 +9,8 @@ namespace timer {
     //% blockid=timer_after
     //% block="after $time do"
     //% time.defl=500
+    //% %time=timePicker ms"
     //% handlerStatement
-    //% time.shadow=timePicker
     //% group="after statement"
     //% weight=10
     export function after(time: number, thenDo: () => void) {
@@ -52,7 +52,7 @@ namespace timer {
     //% block="on update every $delay ms do"
     //% handlerStatement
     //% time.defl=500
-    //% time.shadow=timePicker
+    //% %time=timePicker ms"
     //% group="run and update"
     //% weight=20
     export function intervalState(delay: number, then: () => void) {
@@ -65,7 +65,7 @@ namespace timer {
     //% blockid=timer_interval_handler
     //% block="on update every $delay ms"
     //% time.defl=500
-    //% time.shadow=timePicker
+    //% %time=timePicker ms"
     //% group="run and update"
     //% weight=15
     export function interval(delay: number, then: () => void) {
@@ -104,9 +104,9 @@ namespace timer {
     //% blockid=timer_debounce
     //% block="after $key settled for $time do"
     //% time.defl=500
+    //% %time=timePicker ms"
     //% key.defl="action"
     //% handlerStatement
-    //% time.shadow=timePicker
     //% group="key statement"
     //% weight=10
     export function debounce(key: string, time: number, thenDo: () => void) {
@@ -125,9 +125,9 @@ namespace timer {
     //% blockid=timer_throttle
     //% block="for $key at most once every $time do"
     //% time.defl=500
+    //% %time=timePicker ms"
     //% key.defl="action"
     //% handlerStatement
-    //% time.shadow=timePicker
     //% group="key statement"
     //% weight=5
     export function throttle(key: string, time: number, thenDo: () => void) {
