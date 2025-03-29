@@ -1,4 +1,4 @@
-//% color=#700204 icon="\uf254"
+//% color=#4e54ed icon="\uf254"
 //% groups='[]'
 namespace timer {
 
