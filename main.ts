@@ -49,7 +49,7 @@ namespace timer {
      * Running this handlerstatement every ms
      */
     //% blockid=timer_interval
-    //% block="on update every $delay do"
+    //% block="on update every $delay ms do"
     //% handlerStatement
     //% time.defl=500
     //% %time=timePicker ms"
@@ -63,7 +63,7 @@ namespace timer {
      * Running this statement every ms
      */
     //% blockid=timer_interval_handler
-    //% block="on update every $delay"
+    //% block="on update every $delay ms"
     //% time.defl=500
     //% %time=timePicker ms"
     //% group="run and update"
