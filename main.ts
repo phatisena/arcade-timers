@@ -91,7 +91,6 @@ namespace timer {
      */
     //% blockid=timer_immediate
     //% block="on update do"
-    //% handlerStatement
     //% time.defl=500
     //% %time=timePicker ms"
     //% group="run and update"
