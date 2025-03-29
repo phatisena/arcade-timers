@@ -45,6 +45,50 @@ namespace timer {
         control.runInParallel(then)
     }
 
+    let decounceTimeouts: { [key: string]: number } = {}
+    /**
+     * After this block hasn't been called with the given key
+     * for a certain amount of time run the attached code.
+     * Also known as "debounce".
+     */
+    //% blockid=timer_debounce
+    //% block="after $key settled for $time do"
+    //% time.defl=500
+    //% %time=timePicker ms"
+    //% key.defl="action"
+    //% handlerStatement
+    //% group="key statement"
+    //% weight=10
+    export function debounce(key: string, time: number, thenDo: () => void) {
+        if (decounceTimeouts[key]) {
+            clearTimeout(decounceTimeouts[key])
+        }
+        decounceTimeouts[key] = setTimeout(thenDo, time)
+    }
+
+    let throttleTimeouts: { [key: string]: number } = {}
+    /**
+     * Ensure that the attached code isn't run more than
+     * once per time interval for the given key.
+     * Also known as "throttle".
+     */
+    //% blockid=timer_throttle
+    //% block="for $key at most once every $time do"
+    //% time.defl=500
+    //% %time=timePicker ms"
+    //% key.defl="action"
+    //% handlerStatement
+    //% group="key statement"
+    //% weight=5
+    export function throttle(key: string, time: number, thenDo: () => void) {
+        if (!throttleTimeouts[key]) {
+            thenDo();
+            throttleTimeouts[key] = setTimeout(() => {
+                throttleTimeouts[key] = null;
+            }, time)
+        }
+    }
+
     /**
      * Running this handlerstatement every ms
      */
@@ -95,47 +139,4 @@ namespace timer {
         setImmediate(then)
     }
 
-    let decounceTimeouts: { [key: string]: number } = {}
-    /**
-     * After this block hasn't been called with the given key
-     * for a certain amount of time run the attached code.
-     * Also known as "debounce".
-     */
-    //% blockid=timer_debounce
-    //% block="after $key settled for $time do"
-    //% time.defl=500
-    //% %time=timePicker ms"
-    //% key.defl="action"
-    //% handlerStatement
-    //% group="key statement"
-    //% weight=10
-    export function debounce(key: string, time: number, thenDo: () => void) {
-        if (decounceTimeouts[key]) {
-            clearTimeout(decounceTimeouts[key])
-        }
-        decounceTimeouts[key] = setTimeout(thenDo, time)
-    }
-
-    let throttleTimeouts: { [key: string]: number } = {}
-    /**
-     * Ensure that the attached code isn't run more than
-     * once per time interval for the given key.
-     * Also known as "throttle".
-     */
-    //% blockid=timer_throttle
-    //% block="for $key at most once every $time do"
-    //% time.defl=500
-    //% %time=timePicker ms"
-    //% key.defl="action"
-    //% handlerStatement
-    //% group="key statement"
-    //% weight=5
-    export function throttle(key: string, time: number, thenDo: () => void) {
-        if (!throttleTimeouts[key]) {
-            thenDo();
-            throttleTimeouts[key] = setTimeout(() => {
-                throttleTimeouts[key] = null;
-            }, time)
-        }
-    }
 }
