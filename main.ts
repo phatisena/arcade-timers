@@ -1,6 +1,7 @@
 //% color=#700204 icon="\uf254"
 //% groups='[]'
 namespace timer {
+
     /**
      * After a certain amount of time, the attached code will run.
      * Blocks after this one will run without waiting.
@@ -42,6 +43,61 @@ namespace timer {
     //% weight=5
     export function parallel(then: () => void) {
         control.runInParallel(then)
+    }
+
+    /**
+     * Running this handlerstatement every ms
+     */
+    //% blockid=timer_interval
+    //% block="on update every $delay do"
+    //% handlerStatement
+    //% time.defl=500
+    //% %time=timePicker ms"
+    //% group="run and update"
+    //% weight=20
+    export function intervalState(delay: number, then: () => void) {
+        setInterval(then, delay)
+    }
+
+    /**
+     * Running this statement every ms
+     */
+    //% blockid=timer_interval_handler
+    //% block="on update every $delay"
+    //% time.defl=500
+    //% %time=timePicker ms"
+    //% group="run and update"
+    //% weight=15
+    export function interval(delay: number, then: () => void) {
+        setInterval(then, delay)
+    }
+
+    /**
+     * Running this handlerstatement every time
+     */
+    //% blockid=timer_immediate_handler
+    //% block="on update"
+    //% handlerStatement
+    //% time.defl=500
+    //% %time=timePicker ms"
+    //% group="run and update"
+    //% weight=10
+    export function immediateState(then: () => void) {
+        setImmediate(then)
+    }
+
+    /**
+     * Running this statement every time
+     */
+    //% blockid=timer_immediate
+    //% block="on update do"
+    //% handlerStatement
+    //% time.defl=500
+    //% %time=timePicker ms"
+    //% group="run and update"
+    //% weight=5
+    export function immediate(then: () => void) {
+        setImmediate(then)
     }
 
     let decounceTimeouts: { [key: string]: number } = {}
