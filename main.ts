@@ -2,14 +2,6 @@
 //% groups='[]'
 namespace timer {
 
-    //% blockHidden=true
-    //% blockid=timer_timepicker
-    //% block="$value"
-    //% value.fieldEditor="numberdropdown"
-    //% value.fieldOptions.decompileLiterals=true
-    //% value.fieldOptions.data='[["100 ms", 100], ["200 ms", 200], ["500 ms", 500], ["1000 ms", 1000], ["2000 ms", 2000], ["5000 ms", 5000]]'
-    export function _timePickerMS(value: number) { return value }
-
     /**
      * After a certain amount of time, the attached code will run.
      * Blocks after this one will run without waiting.
@@ -18,7 +10,7 @@ namespace timer {
     //% block="after $time do"
     //% time.defl=500
     //% handlerStatement
-    //% time.shadow=timer_timepicker
+    //% time.shadow=timePicker
     //% group="after statement"
     //% weight=10
     export function after(time: number, thenDo: () => void) {
@@ -60,7 +52,7 @@ namespace timer {
     //% block="on update every $delay ms do"
     //% handlerStatement
     //% time.defl=500
-    //% time.shadow=timer_timepicker
+    //% time.shadow=timePicker
     //% group="run and update"
     //% weight=20
     export function intervalState(delay: number, then: () => void) {
@@ -73,7 +65,7 @@ namespace timer {
     //% blockid=timer_interval_handler
     //% block="on update every $delay ms"
     //% time.defl=500
-    //% time.shadow=timer_timepicker
+    //% time.shadow=timePicker
     //% group="run and update"
     //% weight=15
     export function interval(delay: number, then: () => void) {
@@ -114,7 +106,7 @@ namespace timer {
     //% time.defl=500
     //% key.defl="action"
     //% handlerStatement
-    //% time.shadow=timer_timepicker
+    //% time.shadow=timePicker
     //% group="key statement"
     //% weight=10
     export function debounce(key: string, time: number, thenDo: () => void) {
@@ -135,7 +127,7 @@ namespace timer {
     //% time.defl=500
     //% key.defl="action"
     //% handlerStatement
-    //% time.shadow=timer_timepicker
+    //% time.shadow=timePicker
     //% group="key statement"
     //% weight=5
     export function throttle(key: string, time: number, thenDo: () => void) {
